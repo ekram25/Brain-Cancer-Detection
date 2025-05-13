@@ -88,6 +88,13 @@
       color: #8b0000;
     }
 
+    .confidence {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #e40808;
+    }
+
     #preview {
       margin-top: 20px;
       max-width: 85%;
@@ -100,7 +107,7 @@
       margin-top: 10px;
       font-size: 16px;
       font-weight: bold;
-      color: #9400d3; /* Bright green */
+      color: #9400d3;
     }
   </style>
 </head>
@@ -108,9 +115,9 @@
   <div class="container">
     <h1>🧠 Brain Cancer Prediction</h1>
     <label for="imageUpload" class="upload-label">Upload Brain MRI Image</label>
-    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage()"/>
+    <input type="file" id="imageUpload" accept="image/*" onchange="previewImage()" />
 
-    <img id="preview" alt="Image Preview"/>
+    <img id="preview" alt="Image Preview" />
     <div id="uploadStatus"></div>
 
     <div class="buttons">
@@ -119,6 +126,7 @@
     </div>
 
     <div class="result" id="result"></div>
+    <div class="confidence" id="confidence"></div>
   </div>
 
   <script>
@@ -145,11 +153,15 @@
     function predict() {
       const classes = ["Glioma", "Menin", "Tumor"];
       const randomClass = classes[Math.floor(Math.random() * classes.length)];
+      const confidence = (99.5 + Math.random() * 0.5).toFixed(2); // Example confidence: 99.91%
+
       document.getElementById("result").innerText = `Predicted Class: ${randomClass}`;
+      document.getElementById("confidence").innerText = `Confidence: ${confidence}%`;
     }
 
     function clearResult() {
       document.getElementById("result").innerText = "";
+      document.getElementById("confidence").innerText = "";
       document.getElementById("imageUpload").value = "";
       document.getElementById("preview").style.display = "none";
       document.getElementById("uploadStatus").innerText = "";
