@@ -151,7 +151,7 @@
     }
 
     function predict() {
-      const classes = ["Glioma", "Menin", "Tumor"];
+      const classes = ["Glioma Tumor", "Meningioma Tumor", "Pituitary Tumor"];
       const randomClass = classes[Math.floor(Math.random() * classes.length)];
       const confidence = (99.5 + Math.random() * 0.5).toFixed(2); // Example confidence: 99.91%
 
